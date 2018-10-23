@@ -1,0 +1,16 @@
+<?xml version='1.0'?>
+<form>
+    <cifPrestator>RO12312312</cifPrestator>
+    <numePrestator> S.R.L.</numePrestator>
+    <numarUnicPrestator>J123/123123/123</numarUnicPrestator>
+    <ibanPrestator>RO23BTRL1231231231231311</ibanPrestator>
+    <bancaPrestator>BANCA TRANSILVANIA</bancaPrestator>
+    <cifBeneficiar>RO123242342</cifBeneficiar>
+    <numeBeneficiar> S.R.L.</numeBeneficiar>
+    <numarUnicBeneficiar>J/123/2342234</numarUnicBeneficiar>
+    <ibanBeneficiar>RO23BTRL1231231231231311</ibanBeneficiar>
+    <bancaBeneficiar>BANCA TRANSILVANIA</bancaBeneficiar>
+    <produs>Servicii</produs>
+    <cantitate>2</cantitate>
+    <pretUnitar>334</pretUnitar>
+</form>

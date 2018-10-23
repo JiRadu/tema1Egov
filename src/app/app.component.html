@@ -1,0 +1,105 @@
+<!-- main app container -->
+<div class="jumbotron">
+    <pre>{{factura | json }}</pre>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h3>Generare factura</h3>
+                <form name="form" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm">
+                    <div class="form-group">
+                        <label>CIF Prestator</label>
+                        <input type="text" class="form-control" #cifPrestator="ngModel" name="cifPrestator" [(ngModel)]="factura.cifPrestator"
+                            [ngClass]="{ 'is-invalid': f.submitted && cifPrestator.invalid }" required minlength="1"
+                            maxlength="11" (ngModelChange)="changeCifPrestator($event)" />
+                    </div>
+                    <div class="form-group">
+                        <label>Nume Prestator</label>
+                        <input type="text" class="form-control" #numePrestator="ngModel" name="numePrestator" [(ngModel)]="factura.numePrestator"
+                            [ngClass]="{ 'is-invalid': f.submitted && numePrestator.invalid }" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="numarUnicPrestator">Numar Unic de Inregistrare Prestator</label>
+                        <input type="text" class="form-control" #numarUnicPrestator="ngModel" name="numarUnicPrestator"
+                            [(ngModel)]="factura.numarUnicPrestator" [ngClass]="{ 'is-invalid': f.submitted && numarUnicPrestator.invalid }"
+                            required />
+                    </div>
+                    <div class="form-group">
+                        <label for="ibanPrestator">IBAN Prestator</label>
+                        <input type="ibanPrestator" class="form-control" #ibanPrestator="ngModel" name="ibanPrestator"
+                            [(ngModel)]="factura.ibanPrestator" #ibanPrestator="ngModel" [ngClass]="{ 'is-invalid': f.submitted && ibanPrestator.invalid }"
+                            required minlength="24" maxlength="24" (ngModelChange)="changeIbanPrestator($event)" />
+                    </div>
+                    <div class="form-group">
+                        <label for="bancaPrestator">Banca Prestator</label>
+                        <input type="bancaPrestator" class="form-control" #bancaPrestator="ngModel" name="bancaPrestator"
+                            [(ngModel)]="factura.bancaPrestator" #bancaPrestator="ngModel" [ngClass]="{ 'is-invalid': f.submitted && bancaPrestator.invalid }"
+                            required />
+                    </div>
+                    <div class="form-group">
+                        <label>CIF Beneficiar</label>
+                        <input type="text" class="form-control" #cifBeneficiar="ngModel" name="cifBeneficiar"
+                            [(ngModel)]="factura.cifBeneficiar" [ngClass]="{ 'is-invalid': f.submitted && cifBeneficiar.invalid }"
+                            required minlength="1" maxlength="11" />
+                    </div>
+                    <div class="form-group">
+                        <label>Nume Beneficiar</label>
+                        <input type="text" class="form-control" #numeBeneficiar="ngModel" name="numeBeneficiar"
+                            [(ngModel)]="factura.numeBeneficiar" [ngClass]="{ 'is-invalid': f.submitted && numeBeneficiar.invalid }"
+                            required />
+                    </div>
+                    <div class="form-group">
+                        <label for="numarUnicBeneficiar">Numar Unic de Inregistrare Beneficiar</label>
+                        <input type="text" class="form-control" #numarUnicBeneficiar="ngModel" name="numarUnicBeneficiar"
+                            [(ngModel)]="factura.numarUnicBeneficiar" [ngClass]="{ 'is-invalid': f.submitted && numarUnicBeneficiar.invalid }"
+                            required />
+                    </div>
+                    <div class="form-group">
+                        <label for="ibanBeneficiar">IBAN Beneficiar</label>
+                        <input type="ibanBeneficiar" class="form-control" #ibanBeneficiar="ngModel" name="ibanBeneficiar"
+                            [(ngModel)]="factura.ibanBeneficiar" #ibanBeneficiar="ngModel" [ngClass]="{ 'is-invalid': f.submitted && ibanBeneficiar.invalid }"
+                            required minlength="24" maxlength="24" (ngModelChange)="changeIbanBeneficiar($event)" />
+                    </div>
+                    <div class="form-group">
+                        <label for="bancaBeneficiar">Banca Beneficiar</label>
+                        <input type="bancaBeneficiar" class="form-control" #bancaBeneficiar="ngModel" name="bancaBeneficiar"
+                            [(ngModel)]="factura.bancaBeneficiar" #bancaBeneficiar="ngModel" [ngClass]="{ 'is-invalid': f.submitted && bancaBeneficiar.invalid }"
+                            required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="produs">Denumire produs</label>
+                        <input type="produs" class="form-control" #produs="ngModel" name="produs" [(ngModel)]="factura.produs"
+                            #produs="ngModel" [ngClass]="{ 'is-invalid': f.submitted && produs.invalid }" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cantitate">Cantitate</label>
+                        <input type="cantitate" class="form-control" #cantitate="ngModel" name="cantitate" [(ngModel)]="factura.cantitate" #cantitate="ngModel"
+                            [ngClass]="{ 'is-invalid': f.submitted && cantitate.invalid }" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pretUnitar">Pret unitar ( RON )</label>
+                        <input type="pretUnitar" class="form-control" #pretUnitar="ngModel" name="pretUnitar"
+                            [(ngModel)]="factura.pretUnitar" #pretUnitar="ngModel" [ngClass]="{ 'is-invalid': f.submitted && pretUnitar.invalid }"
+                            required />
+                    </div>
+
+                    <div class="form-group">
+                        <label>Total fara TVA:</label>
+                        <div>{{factura.pretUnitar * factura.cantitate}}</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Total:</label>
+                        <div>{{total}}</div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
